@@ -1,0 +1,129 @@
+@import "base.css";
+@import "credit-card.css";
+@import "form.css";
+
+@media (max-width: 420px) {
+  :root {
+    font-size: 50%;
+  }
+
+  body {
+    background: #202024;
+  }
+
+  #app {
+    background: none;
+    border: none;
+  }
+
+  .cc-bg svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (min-width: 780px) {
+  #app {
+    grid-template-areas:
+      "A B"
+      "C B";
+
+    width: fit-content;
+    max-width: fit-content;
+    padding-inline: 4.8rem;
+
+    grid-template-columns: 0.8fr 1fr;
+  }
+
+  #app header {
+    grid-area: A;
+  }
+
+  #app section.cc {
+    grid-area: B;
+    align-self: center;
+  }
+
+  #app form {
+    grid-area: C;
+  }
+
+  #app .popup {
+    position: fixed;
+    top: 20px;
+    right: 60px;
+    width: 400px;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    color: #111;
+    background: #fff;
+    animation: toLeft ease .8s backwards;
+  }
+
+  @keyframes toLeft {
+    0% {
+      transform: translateX(600px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  #app .popup::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 6px;
+    background: #0f0;
+  }
+
+  #app .popup img {
+    width: 32px;
+    margin-left: 10px;
+  }
+
+  #app .popup .msg {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  #app .popup button {
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    padding: 6px;
+    transition: ease .2s;
+    cursor: pointer;
+    border: 1px solid rgba(255, 0, 0, 0.8);
+    background: transparent;
+  }
+
+  #app .popup button:hover {
+    color: #fff;
+    background: rgba(255, 0, 0, 0.8);
+  }
+
+  #app .open {
+    display: flex;
+  }
+
+  #app .close {
+    animation: close .8s backwards;
+  }
+
+  @keyframes close {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(600px);
+    }
+  }
+}
